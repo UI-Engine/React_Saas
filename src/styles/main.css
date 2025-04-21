@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@plugin 'flowbite-react/plugin/tailwindcss';
+@source '../../.flowbite-react/class-list.json';
+@import "./components/component.css";
+
+@theme {
+  /* default colors */
+  --color-primary: 56 189 248; /* sky-500 */
+  --color-secondary: 239 68 68; /* red-500 */
+  --bg-color: 255 255 255; /* white */
+  --text-color: 0 0 0; /* black */
+  --font-sans: "Poppins, sans-serif";
+  --btn-font-size: 10pz;
+}
+
+@layer utilities {
+  .text-primary {
+    color: rgb(var(--color-primary));
+  }
+  .text-secondary {
+    color: rgb(var(--color-secondary));
+  }
+  .bg-primary {
+    background-color: rgb(var(--color-primary));
+  }
+  .bg-secondary {
+    background-color: rgb(var(--color-secondary));
+  }
+  .bg-base {
+    background-color: rgb(var(--bg-color));
+  }
+  .text-base {
+    color: rgb(var(--text-color));
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+}
+
+@layer base {
+  :root {
+    color: rgb(var(--text-color));
+    background-color: rgb(var(--bg-color));
+    font-family: var(--font-sans);
+  }
+
+  .theme-light {
+    --color-primary: 56 189 248;
+    --color-secondary: 239 68 68;
+    --bg-color: 255 255 255;
+    --text-color: 0 0 0;
+  }
+
+  .theme-dark {
+    --color-primary: 147 197 253;
+    --color-secondary: 252 165 165;
+    --bg-color: 17 24 39;
+    --text-color: 255 255 255;
+  }
+}

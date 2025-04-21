@@ -1,0 +1,6 @@
+@layer utilities {
+  .custom-btn {
+    @apply h-auto px-4 py-2 rounded-sm focus:outline-none focus:ring-1 border;
+    font-size: var(--btn-font-size);
+  }
+}
