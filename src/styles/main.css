@@ -2,6 +2,7 @@
 @plugin 'flowbite-react/plugin/tailwindcss';
 @source '../../.flowbite-react/class-list.json';
 @import "./components/component.css";
+@import "./layouts/layout.css";
 
 @theme {
   /* default colors */

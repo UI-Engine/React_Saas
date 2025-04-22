@@ -6,6 +6,7 @@ import React, {
   useState,
   ReactNode,
 } from "react";
+import SecureLocalStorage from "../Modules/SecureLs";
 
 export type ThemeName = "theme-light" | "theme-dark" | "theme-custom";
 export const themes: ThemeName[] = ["theme-light", "theme-dark"];
@@ -24,7 +25,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [theme, setTheme] = useState<ThemeName>(
-    () => (localStorage.getItem("theme") as ThemeName) || "theme-light"
+    () => (SecureLocalStorage.get("theme") as ThemeName) || "theme-light"
   );
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     // Apply new theme class
     root.classList.add(theme);
     // Persist choice
-    localStorage.setItem("theme", theme);
+    SecureLocalStorage.set("theme", theme);
   }, [theme]);
 
   return (

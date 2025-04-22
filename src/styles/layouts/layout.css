@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@layer utilities {
+    /* ────────────────────────────────────────────────
+       1. Sidebar base: off‑canvas on small, in‑flow on lg+
+       ──────────────────────────────────────────────── */
+    .layout-sidebar {
+      @apply fixed inset-y-0 left-0 transition-transform duration-100 ease-in-out border-r-1;
+      /* Always visible on lg+ in normal flow */
+      @apply lg:relative lg:translate-x-0 lg:flex-shrink-0;
+      width: 25vw;
+      transform: translateX(-100%); /* hidden by default */
+    }
+  
+    /* ────────────────────────────────────────────────
+       2. Drawer‑closed (mobile): keep sidebar hidden
+       ──────────────────────────────────────────────── */
+    .sidebar-closed {
+      transform: translateX(0%);
+    }
+  
+    /* ────────────────────────────────────────────────
+       3. Collapsed (desktop): narrow to icon bar
+       ──────────────────────────────────────────────── */
+    .sidebar-collapsed {
+      width: 4rem;
+    }
+  
+    /* ────────────────────────────────────────────────
+       4. Toggle button styles
+       ──────────────────────────────────────────────── */
+    .sidebar-toggle {
+      @apply lg:hidden p-2 text-gray-600 hover:text-gray-800 focus:outline-none;
+    }
+    .sidebar-collapse {
+      @apply hidden lg:block p-2 text-gray-600 hover:text-gray-800 focus:outline-none;
+    }
+  }
