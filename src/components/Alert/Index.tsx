@@ -21,7 +21,7 @@ export const Alert: React.FC<AlertProps> = ({
       additionalContent={additionalContent}
       color={color}
       icon={icon}
-      onDismiss={() => onDismiss}
+      onDismiss={onDismiss}
       rounded={rounded}
     >
       <p className="text-start text-[14px]">{text}</p>
