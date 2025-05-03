@@ -1,0 +1,18 @@
+.app-drawer{
+    padding:  0px;
+}
+
+
+.app-drawer-header{
+    padding: 0rem var(--app-padding);
+}
+
+.app-drawer-header h5 {
+    margin-bottom: 0%;
+    margin-top: 0.5rem;
+    gap: 1rem;
+    height: 5dvh;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}

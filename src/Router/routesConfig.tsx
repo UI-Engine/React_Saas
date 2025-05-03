@@ -1,5 +1,4 @@
-// routesConfig.tsx
-import Layout from "../layout/layouts/FirstLayout";
+import Layout from "../layout";
 import Dashboard from "../pages/Dashboard";
 import Landing from "../pages/Landing";
 

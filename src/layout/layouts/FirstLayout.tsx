@@ -1,6 +1,11 @@
-import { Drawer, DrawerHeader } from "flowbite-react";
+import { Drawer, DrawerHeader, DrawerItems } from "flowbite-react";
 import React, { useState, useEffect, useRef } from "react";
 import useBreakpoints from "../../hooks/ui/useBreakpoints";
+import SidebarComponent from "../sidebar";
+import SecureLocalStorage from "../../Modules/SecureLs";
+import Icon from "../../components/Icons";
+import { LucideListCollapse, LucideMenu } from "lucide-react";
+import AppLogo from "../../../public/assets/AppLogo.png";
 
 const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
   children,
@@ -20,6 +25,19 @@ const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
     }
   }, [ScreenLargerThanMd]); // empty deps → runs once on mount and cleanup on unmount
 
+  useEffect(() => {
+    try {
+      let collapsed = SecureLocalStorage.get("isSidebarCollapsed");
+      setIsCollapsed(collapsed);
+    } catch (e) {
+      setIsCollapsed(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    SecureLocalStorage.set("isSidebarCollapsed", isCollapsed);
+  }, [isCollapsed]);
+
   const sidebarClasses = [
     "layout-sidebar",
     !isDrawerOpen && "sidebar-closed",
@@ -29,10 +47,23 @@ const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
     .join(" ");
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex h-[100dvh] overflow-hidden">
       {ScreenLargerThanMd ? (
         <aside ref={sidebarRef} className={sidebarClasses}>
-          <div className="">Logo / Nav Links</div>
+          <div className="sidebar-header">
+            <>
+              <LucideMenu
+                onClick={() => setIsCollapsed((c) => !c)}
+                size={32}
+                className="text-base pointer"
+                strokeWidth={1}
+              />
+              <span className="sidebar-desktop-header">
+                {isCollapsed ? "" : <img src={AppLogo} />}
+              </span>
+            </>
+          </div>
+          <SidebarComponent isCollapsed={isCollapsed} />
         </aside>
       ) : (
         <Drawer
@@ -40,17 +71,23 @@ const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
           onClose={() => {
             setIsDrawerOpen(false);
           }}
+          className="app-drawer"
         >
-          <DrawerHeader title="MENU" titleIcon={() => <></>}>
-            ps
-          </DrawerHeader>
+          <DrawerHeader
+            className="app-drawer-header"
+            title=""
+            titleIcon={() => <img src={AppLogo} />}
+          />
+          <DrawerItems>
+            <SidebarComponent isCollapsed={false} />
+          </DrawerItems>
         </Drawer>
       )}
 
       {/* Main area */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="h-[5dvh] shadow flex items-center px-4 border-b-1">
+        <header className="h-[5dvh] flex items-center px-4 border-b-1 border-b-gray-200">
           {/* Mobile: Drawer toggle */}
           <button
             onClick={() => setIsDrawerOpen((open) => !open)}
@@ -71,36 +108,10 @@ const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
               />
             </svg>
           </button>
-
-          {/* Desktop: Collapse toggle */}
-          <button
-            onClick={() => setIsCollapsed((c) => !c)}
-            className="sidebar-collapse ml-2"
-          >
-            {/* chevron icon; rotates when collapsed */}
-            <svg
-              className={`w-6 h-6 transform transition-transform ${
-                isCollapsed ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-
-          {/* Header title / other controls */}
-          <h1 className="ml-4 text-xl font-semibold">My SaaS App</h1>
         </header>
 
         {/* Content */}
-        <main className="h-[90dvh] overflow-auto p-4">{children}</main>
+        <main className="h-[95dvh] overflow-auto p-4">{children}</main>
       </div>
     </div>
   );
