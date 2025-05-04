@@ -1,14 +1,16 @@
 @import "tailwindcss";
+@import "./sidebar.css";
+@import "./drawer.css";
 
 @layer utilities {
     /* ────────────────────────────────────────────────
        1. Sidebar base: off‑canvas on small, in‑flow on lg+
        ──────────────────────────────────────────────── */
     .layout-sidebar {
-      @apply fixed inset-y-0 left-0 transition-transform duration-100 ease-in-out border-r-1;
+      @apply fixed inset-y-0 left-0 transition-transform duration-100 ease-in-out border-r-1 border-r-gray-200;
       /* Always visible on lg+ in normal flow */
       @apply lg:relative lg:translate-x-0 lg:flex-shrink-0;
-      width: 25vw;
+      width: 18rem;
       transform: translateX(-100%); /* hidden by default */
     }
   
@@ -23,7 +25,7 @@
        3. Collapsed (desktop): narrow to icon bar
        ──────────────────────────────────────────────── */
     .sidebar-collapsed {
-      width: 4rem;
+      width: 5rem;
     }
   
     /* ────────────────────────────────────────────────

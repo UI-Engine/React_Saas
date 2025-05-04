@@ -1,0 +1,87 @@
+.sidebar{
+    width: auto;
+}
+
+.sidebar-header{
+    padding: 1.5rem;
+    height: 5dvh;
+    width: fit-content;
+    font-size: larger;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.sidebar-desktop-header{
+    display: inline-flex;
+}
+
+.sidebar .overflow-y-auto{
+    background-color: var(--bg-color);
+    border-radius: 0;
+    padding: var(--app-padding);
+}
+
+.sidebar-item-custom {
+    color: var(--text-color);
+    border-radius: var(--app-border-radius);
+}
+
+.sidebar-item-custom.active {
+    color: var(--color-primary);
+}
+
+.sidebar-item-custom.active svg {
+    stroke: var(--color-primary);
+  }
+
+.sidebar-item-custom:hover {
+    color: var(--color-primary);
+}
+
+.sidebar-item-custom svg {
+    stroke-width: 1.25;
+    stroke: var(--text-color);
+}
+
+.sidebar-item-custom:hover svg {
+    stroke: var(--text-color);  
+}
+
+
+.sidebar-collapse-custom {
+    color: var(--text-color);
+    border-radius: var(--app-border-radius);
+}
+
+.sidebar-collapse-custom svg {
+    stroke-width: 1.25;
+    stroke: var(--text-color);
+}
+
+.sidebar-collapse-custom:hover {
+    color: var(--color-primary);
+}
+
+.sidebar-collapse-custom:hover svg {
+    stroke: var(--color-primary);
+}
+
+
+/* collapsed menu styles */
+
+.sidebar-collapsed-menu-custom{
+    display: inline-flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.sidebar-collapsed-menu-custom:hover{
+    background-color: var(--bg-color);
+}
+
+.sidebar-collapsed-menu-custom:hover svg{
+    stroke: var(--color-primary);
+}

@@ -3,8 +3,6 @@ import Layout from "../layout";
 import Dashboard from "../pages/Dashboard";
 import Landing from "../pages/Landing";
 
-
-
 const routesConfig = [
   {
     element: <Layout />,
