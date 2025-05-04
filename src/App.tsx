@@ -1,4 +1,4 @@
-import "./styles/main.css";
+import "../public/styles/main.css";
 import { ThemeProvider } from "./Theme/ThemeContext";
 import AppRouter from "./Router";
 
