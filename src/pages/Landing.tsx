@@ -120,7 +120,7 @@ const Landing: React.FC = () => (
     </section>
 
     {/* 2. Tech Stack Animation */}
-    <section className="space-y-6 text-center">
+    <section className="space-y-6 text-center w-full">
       <h2 className="text-3xl font-semibold text-primary">Our Tech Stack</h2>
       <div className="tech-marquee overflow-hidden">
         <div className="tech-marquee-inner flex gap-16">
