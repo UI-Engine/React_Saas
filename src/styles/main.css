@@ -3,9 +3,7 @@
 @source '../../.flowbite-react/class-list.json';
 @import "./components/component.css";
 @import "./layouts/layout.css";
-
-/* HTML head:
-*/
+@import "./misc/misc.css";
 
 @custom-variant dark (&:where(.theme-dark, .theme-dark *));
 
@@ -16,6 +14,7 @@
   --color-accent: #8479D9;
   --color-bg: #F5F5FF;
   --text-color: #1E1E2F;
+  --border-color: #D1D5DB; 
 
   /* Font */
   --font-sans: "Nunito", sans-serif;
@@ -144,6 +143,13 @@
 
   /* misc */
   .pointer{cursor: pointer;}
+
+  .tech-card { @apply flex-none flex flex-col items-center space-y-2; }
+  .tech-marquee { @apply relative py-4 overflow-hidden; }
+  .tech-marquee-inner {
+    @apply inline-flex gap-16 items-center;
+    animation: marquee 20s linear infinite;
+  }
 }
 
 @layer base {
@@ -151,6 +157,10 @@
     font-family: var(--font-sans);
     color: var(--text-color);
     background-color: var(--color-bg);
+  }
+
+  *, ::before, ::after {
+    border-color: var(--border-color) !important;
   }
 
   /* Default heading styles so h1-h6 reflect theme sizes */
@@ -166,6 +176,7 @@
     --color-secondary: #4B3B8B;
     --color-bg: #FFFFFF;
     --text-color: #1E1E2F;
+    --border-color: #D1D5DB;
   }
 
   .theme-dark {
@@ -173,5 +184,16 @@
     --color-secondary: #5E4B9B;
     --color-bg: #1E1E2F;
     --text-color: #F5F5FF;
+    --border-color: #374151; 
   }
+}
+
+@keyframes shine {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

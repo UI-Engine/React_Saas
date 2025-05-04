@@ -32,7 +32,7 @@
        4. Toggle button styles
        ──────────────────────────────────────────────── */
     .sidebar-toggle {
-      @apply lg:hidden p-2 text-gray-600 hover:text-gray-800 focus:outline-none;
+      @apply lg:hidden cursor-pointer text-base ;
     }
     .sidebar-collapse {
       @apply hidden lg:block p-2 text-gray-600 hover:text-gray-800 focus:outline-none;

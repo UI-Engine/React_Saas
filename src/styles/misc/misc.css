@@ -1,0 +1,16 @@
+@layer utilities {
+    .app-logo {
+        height: 24px;
+        width: 128px;
+        overflow: hidden;
+    }
+
+    .avatar{
+        height: 24px;
+        width: 24px;
+    }
+
+    .right-toolbar {
+        @apply flex items-center ml-auto gap-4;
+    }
+}
