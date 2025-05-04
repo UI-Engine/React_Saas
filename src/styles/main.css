@@ -144,11 +144,25 @@
   /* misc */
   .pointer{cursor: pointer;}
 
-  .tech-card { @apply flex-none flex flex-col items-center space-y-2; }
-  .tech-marquee { @apply relative py-4 overflow-hidden; }
+  .tech-card { 
+    @apply flex-none flex flex-col items-center space-y-2; 
+    min-width: 80px;  /* Prevent cards from getting too small */
+  }
+  
+  .tech-marquee { 
+    @apply relative py-2 sm:py-4 overflow-hidden; 
+    max-width: 70vw;
+  }
+  
   .tech-marquee-inner {
-    @apply inline-flex gap-16 items-center;
+    @apply inline-flex items-center;
     animation: marquee 20s linear infinite;
+    will-change: transform;  /* Performance optimization */
+  }
+  
+  /* Pause animation on hover for better UX */
+  .tech-marquee:hover .tech-marquee-inner {
+    animation-play-state: paused;
   }
 }
 
