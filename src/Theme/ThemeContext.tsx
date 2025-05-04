@@ -14,11 +14,13 @@ export const themes: ThemeName[] = ["theme-light", "theme-dark"];
 interface ThemeContextType {
   theme: ThemeName;
   setTheme: (t: ThemeName) => void;
+  toggleDarkLightTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: "theme-light",
   setTheme: () => {},
+  toggleDarkLightTheme: () => {},
 });
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
@@ -27,6 +29,11 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   const [theme, setTheme] = useState<ThemeName>(
     () => (SecureLocalStorage.get("theme") as ThemeName) || "theme-light"
   );
+
+  const toggleDarkLightTheme = () => {
+    if (theme === "theme-light") setTheme("theme-dark");
+    else setTheme("theme-light");
+  };
 
   useEffect(() => {
     const root = document.documentElement;
@@ -39,7 +46,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleDarkLightTheme }}>
       {children}
     </ThemeContext.Provider>
   );

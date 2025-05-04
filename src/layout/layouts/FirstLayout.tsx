@@ -3,9 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import useBreakpoints from "../../hooks/ui/useBreakpoints";
 import SidebarComponent from "../sidebar";
 import SecureLocalStorage from "../../Modules/SecureLs";
-import Icon from "../../components/Icons";
-import { LucideListCollapse, LucideMenu } from "lucide-react";
+import { LucideMenu } from "lucide-react";
 import AppLogo from "../../../public/assets/AppLogo.png";
+import Header from "../header";
 
 const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
   children,
@@ -16,6 +16,11 @@ const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
   const { isMd, isSm, isXs } = useBreakpoints();
 
   const ScreenLargerThanMd = !(isMd || isSm || isXs);
+
+  const shouldShowAppLogo = (): boolean => {
+    if (isCollapsed || !ScreenLargerThanMd) return true;
+    else return false;
+  };
 
   useEffect(() => {
     if (ScreenLargerThanMd) {
@@ -59,7 +64,7 @@ const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
                 strokeWidth={1}
               />
               <span className="sidebar-desktop-header">
-                {isCollapsed ? "" : <img src={AppLogo} />}
+                {isCollapsed ? "" : <img src={AppLogo} className="app-logo" />}
               </span>
             </>
           </div>
@@ -76,7 +81,7 @@ const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
           <DrawerHeader
             className="app-drawer-header"
             title=""
-            titleIcon={() => <img src={AppLogo} />}
+            titleIcon={() => <img src={AppLogo} className="app-logo" />}
           />
           <DrawerItems>
             <SidebarComponent isCollapsed={false} />
@@ -87,31 +92,19 @@ const FirstLayout: React.FC<{ children?: React.ReactNode }> = ({
       {/* Main area */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="h-[5dvh] flex items-center px-4 border-b-1 border-b-gray-200">
+        <header className="h-[7dvh] flex-1 flex items-center border-b-1 border-b-gray-200">
           {/* Mobile: Drawer toggle */}
-          <button
-            onClick={() => setIsDrawerOpen((open) => !open)}
+          <LucideMenu
+            size={32}
             className="sidebar-toggle"
-          >
-            {/* hamburger icon */}
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+            strokeWidth={1}
+            onClick={() => setIsDrawerOpen((open) => !open)}
+          />
+          <Header showAppLogo={shouldShowAppLogo()} />
         </header>
 
         {/* Content */}
-        <main className="h-[95dvh] overflow-auto p-4">{children}</main>
+        <main className="h-[93dvh] overflow-auto p-4">{children}</main>
       </div>
     </div>
   );
