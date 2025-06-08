@@ -4,6 +4,7 @@ import {
   Users,
   Settings,
   LucideIcon,
+  Folder,
 } from 'lucide-react';
 
 export interface MenuItem {
@@ -49,6 +50,16 @@ const menuItems: MenuItem[] = [
       {
         label: 'Security',
         href: 'security',
+      },
+    ],
+  },
+  {
+    label: 'Saas',
+    icon: Folder,
+    children: [
+      {
+        label: 'Code Editor',
+        href: 'saas-components/code-editor',
       },
     ],
   },

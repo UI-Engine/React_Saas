@@ -10,8 +10,11 @@
     "postinstall": "flowbite-react patch"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.3",
+    "@codemirror/theme-one-dark": "^6.1.2",
     "@tailwindcss/postcss": "^4.1.4",
     "@types/react-router-dom": "^5.3.3",
+    "@uiw/react-codemirror": "^4.23.12",
     "flowbite-react": "^0.11.7",
     "install": "^0.13.0",
     "lucide-react": "^0.503.0",
