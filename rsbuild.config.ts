@@ -8,6 +8,6 @@ export default defineConfig({
     template: './public/index.html',
   },
    server : {
-    port : 5173
+    port : 9000
    }
 });

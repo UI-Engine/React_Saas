@@ -5,7 +5,12 @@ import {
 } from "../components/saas/CodeEditor/EditorConfig";
 import CodeMirrorEditor from "../components/saas/CodeEditor/CodeMirrorEditor";
 import Icon from "../components/Icons";
-import { Tooltip } from "flowbite-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import ConfigForm from "../components/saas/CodeEditor/CodeEditorConfigForm";
 import { useTheme } from "../Theme/ThemeContext";
 
@@ -42,17 +47,20 @@ const CodeEditor = () => {
       >
         <div className="h-[2.5rem] border-b-0 border bg-base flex justify-end items-center gap-4 p-2">
           <LanguageDropdown config={config} />
-          <Tooltip
-            content={fullScreen ? "Minimize" : "Maximize"}
-            placement="bottom"
-            style="light"
-          >
-            <Icon
-              name={fullScreen ? "Shrink" : "Expand"}
-              className="pointer"
-              onClick={toggleFullScreen}
-            />
-          </Tooltip>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Icon
+                  name={fullScreen ? "Shrink" : "Expand"}
+                  className="pointer"
+                  onClick={toggleFullScreen}
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                {fullScreen ? "Minimize" : "Maximize"}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
         <CodeMirrorEditor
           value={code}
