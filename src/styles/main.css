@@ -8,7 +8,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 @layer utilities {
   /* Colors */
   .text-primary    { color: var(--color-primary); }
@@ -86,24 +85,24 @@
   .btn             { font-size: var(--btn-font-size); padding: var(--input-padding); border-radius: var(--radius-sm); }
 
   /* misc */
-  .pointer{cursor: pointer;}
+  .pointer { cursor: pointer; }
 
   .tech-card { 
     @apply flex-none flex flex-col items-center space-y-2; 
     min-width: 80px;  /* Prevent cards from getting too small */
   }
-  
+
   .tech-marquee { 
     @apply relative py-2 sm:py-4 overflow-hidden; 
     max-width: 70vw;
   }
-  
+
   .tech-marquee-inner {
     @apply inline-flex items-center;
     animation: marquee 20s linear infinite;
     will-change: transform;  /* Performance optimization */
   }
-  
+
   /* Pause animation on hover for better UX */
   .tech-marquee:hover .tech-marquee-inner {
     animation-play-state: paused;
@@ -236,6 +235,72 @@
   h4 { font-size: var(--font-size-lg); font-weight: var(--font-weight-normal); line-height: var(--line-height-snug); }
   h5 { font-size: var(--font-size-base); font-weight: var(--font-weight-normal); line-height: var(--line-height-normal); }
   h6 { font-size: var(--font-size-sm); font-weight: var(--font-weight-normal); line-height: var(--line-height-normal); }
+
+  
+
+  /* Global Scrollbar Styles */
+  /* Firefox */
+  html, body, [data-js-focus-visible] {
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted-foreground) transparent;
+  }
+
+  /* WebKit-based browsers (Chrome, Safari, Edge) */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  [data-js-focus-visible]::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track,
+  [data-js-focus-visible]::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb,
+  [data-js-focus-visible]::-webkit-scrollbar-thumb {
+    background: var(--muted-foreground);
+    border-radius: var(--radius-sm);
+  }
+
+  html::-webkit-scrollbar-thumb:hover,
+  body::-webkit-scrollbar-thumb:hover,
+  [data-js-focus-visible]::-webkit-scrollbar-thumb:hover {
+    background: var(--ring);
+  }
+
+  html::-webkit-scrollbar-button,
+  body::-webkit-scrollbar-button,
+  [data-js-focus-visible]::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  /* Dark mode scrollbar styles */
+  .dark html::-webkit-scrollbar-track,
+  .dark body::-webkit-scrollbar-track,
+  .dark [data-js-focus-visible]::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .dark html::-webkit-scrollbar-thumb,
+  .dark body::-webkit-scrollbar-thumb,
+  .dark [data-js-focus-visible]::-webkit-scrollbar-thumb {
+    background: var(--muted-foreground);
+  }
+
+  .dark html::-webkit-scrollbar-thumb:hover,
+  .dark body::-webkit-scrollbar-thumb:hover,
+  .dark [data-js-focus-visible]::-webkit-scrollbar-thumb:hover {
+    background: var(--ring);
+  }
+
+  .dark html::-webkit-scrollbar-button,
+  .dark body::-webkit-scrollbar-button,
+  .dark [data-js-focus-visible]::-webkit-scrollbar-button {
+    display: none;
+  }
 }
 
 @keyframes shine {

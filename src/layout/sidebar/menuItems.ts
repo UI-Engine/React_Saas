@@ -8,58 +8,138 @@ import {
 } from 'lucide-react';
 
 export interface MenuItem {
-  label: string;
-  href?: string;
+  title: string;
+  url?: string;
   icon?: LucideIcon;
   children?: MenuItem[];
 }
 
 const menuItems: MenuItem[] = [
   {
-    label: 'Home',
+    title: 'Home',
     icon: Home,
-    href: '/',
+    url: '/',
   },
   {
-    label: 'Components',
+    title: 'Components',
     icon: ShoppingCart,
     children: [
       {
-        label: 'Button',
-        href: 'components/button',
+        title: 'Accordion',
+        url: 'components/accordion',
       },
       {
-        label: 'Accordion',
-        href: 'components/accordion',
+        title: 'Alert',
+        url: 'components/alert',
+      },
+      {
+        title: 'Badge',
+        url: 'components/badge',
+      },
+      {
+        title: 'Button',
+        url: 'components/button',
+      },
+      {
+        title: 'Cards',
+        url: 'components/cards',
+      },
+      {
+        title: 'Charts',
+        url: 'components/charts',
+      },
+      {
+        title: 'Command',
+        url: 'components/command',
+      },
+      {
+        title: 'Context Menu',
+        url: 'components/context-menu',
+      },
+      {
+        title: 'Datatable',
+        url: 'components/datatable',
+      },
+      {
+        title: 'Drawer',
+        url: 'components/drawer',
+      },
+      {
+        title: 'Dropdown',
+        url: 'components/dropdown',
+      },
+      {
+        title: 'File Upload',
+        url: 'components/file-upload',
+      },
+      {
+        title: 'Form Elements',
+        url: 'components/form-elements',
+      },
+      {
+        title: 'Loaders',
+        url: 'components/loaders',
+      },
+      {
+        title: 'Menu Bar',
+        url: 'components/menu-bar',
+      },
+      {
+        title: 'Modal',
+        url: 'components/modal',
+      },
+      {
+        title: 'Sheet',
+        url: 'components/sheet',
+      },
+      {
+        title: 'Skeletons',
+        url: 'components/skeletons',
+      },
+      {
+        title: 'Table',
+        url: 'components/table',
+      },
+      {
+        title: 'Tabs',
+        url: 'components/tabs',
+      },
+      {
+        title: 'Toast',
+        url: 'components/toast',
+      },
+      {
+        title: 'Tooltip',
+        url: 'components/tooltip',
       },
     ],
   },
   {
-    label: 'Users',
+    title: 'Users',
     icon: Users,
-    href: 'users',
+    url: 'users',
   },
   {
-    label: 'Settings',
+    title: 'Settings',
     icon: Settings,
     children: [
       {
-        label: 'Profile',
-        href: 'profile',
+        title: 'Profile',
+        url: 'profile',
       },
       {
-        label: 'Security',
-        href: 'security',
+        title: 'Security',
+        url: 'security',
       },
     ],
   },
   {
-    label: 'Saas',
+    title: 'Saas',
     icon: Folder,
     children: [
       {
-        label: 'Code Editor',
-        href: 'saas-components/code-editor',
+        title: 'Code Editor',
+        url: 'saas-components/code-editor',
       },
     ],
   },

@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 import {
   DEFAULT_EDITOR_CONFIG,
   EditorConfig,
-} from "../components/saas/CodeEditor/EditorConfig";
-import CodeMirrorEditor from "../components/saas/CodeEditor/CodeMirrorEditor";
-import Icon from "../components/Icons";
+} from "../../components/saas/CodeEditor/EditorConfig";
+import CodeMirrorEditor from "../../components/saas/CodeEditor/CodeMirrorEditor";
+import Icon from "../../components/Icons";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import ConfigForm from "../components/saas/CodeEditor/CodeEditorConfigForm";
-import { useTheme } from "../Theme/ThemeContext";
+import ConfigForm from "../../components/saas/CodeEditor/CodeEditorConfigForm";
 
 const CodeEditor = () => {
   const [code, setCode] = useState(`function greeting() {
