@@ -227,7 +227,11 @@ const AccordionPage = () => {
                       },
                     }}
                   >
-                    <CustomAccordionItem value="success" status="success">
+                    <CustomAccordionItem
+                      value="success"
+                      status="success"
+                      className="last:border-b"
+                    >
                       <CustomAccordionTrigger status="success">
                         Completed Tasks
                       </CustomAccordionTrigger>
@@ -245,8 +249,24 @@ const AccordionPage = () => {
                         </div>
                       </CustomAccordionContent>
                     </CustomAccordionItem>
+                  </CustomAccordion>
 
-                    <CustomAccordionItem value="warning" status="warning">
+                  <CustomAccordion
+                    type="single"
+                    collapsible
+                    analytics={{
+                      event: "accordion_interaction",
+                      properties: {
+                        component: "custom_accordion",
+                        variant: "status",
+                      },
+                    }}
+                  >
+                    <CustomAccordionItem
+                      value="warning"
+                      status="warning"
+                      className="last:border-b"
+                    >
                       <CustomAccordionTrigger status="warning">
                         Pending Reviews
                       </CustomAccordionTrigger>
@@ -264,8 +284,24 @@ const AccordionPage = () => {
                         </div>
                       </CustomAccordionContent>
                     </CustomAccordionItem>
+                  </CustomAccordion>
 
-                    <CustomAccordionItem value="error" status="error">
+                  <CustomAccordion
+                    type="single"
+                    collapsible
+                    analytics={{
+                      event: "accordion_interaction",
+                      properties: {
+                        component: "custom_accordion",
+                        variant: "status",
+                      },
+                    }}
+                  >
+                    <CustomAccordionItem
+                      value="error"
+                      status="error"
+                      className="last:border-b"
+                    >
                       <CustomAccordionTrigger status="error">
                         Failed Operations
                       </CustomAccordionTrigger>

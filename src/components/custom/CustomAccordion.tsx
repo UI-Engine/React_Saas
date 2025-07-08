@@ -194,7 +194,7 @@ const CustomAccordionTrigger = React.forwardRef<
           {getStatusIcon()}
           <span className="flex-1 text-left font-medium">{children}</span>
         </div>
-        <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+        {/* <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" /> */}
       </AccordionTrigger>
     );
   }
