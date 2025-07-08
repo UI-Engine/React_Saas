@@ -13,6 +13,7 @@ import { LucideMoon, LucideSun } from "lucide-react";
 import Icon from "../../components/Icons";
 import { FaGithub } from "react-icons/fa";
 import useBreakpoints from "../../hooks/ui/useBreakpoints";
+import { ThemeSwitcher } from "../../ThemeSwitcher";
 
 interface HeaderProps {
   showAppLogo: boolean;
@@ -71,19 +72,7 @@ const Header: React.FC<HeaderProps> = ({ showAppLogo }) => {
 
         {/* Right toolbar */}
         <div className="right-toolbar">
-          <Tooltip
-            content={
-              theme === "theme-light" ? "Toggle Dark Mode" : "Toggle Light Mode"
-            }
-            placement="bottom"
-            style="light"
-          >
-            <Icon
-              name={theme === "theme-light" ? "Moon" : "Sun"}
-              className="pointer"
-              onClick={toggleDarkLightTheme}
-            />
-          </Tooltip>
+          <ThemeSwitcher />
           <Tooltip content="View on GitHub" placement="bottom" style="light">
             <a
               href="https://github.com/UI-Engine/React_Saas"

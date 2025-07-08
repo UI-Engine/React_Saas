@@ -1,23 +1,16 @@
-// src/ThemeSwitcher.tsx
 import React from "react";
-import { useTheme, themes } from "./Theme/ThemeContext";
-import { Button } from "flowbite-react";
+import { useTheme } from "./Theme/ThemeContext";
+import { Sun, Moon } from "lucide-react";
 
 export const ThemeSwitcher: React.FC = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleDarkLightTheme } = useTheme();
   return (
-    <div className="flex gap-2">
-      {themes.map((t) => (
-        <Button
-          key={t}
-          onClick={() => setTheme(t)}
-          //   className={`px-3 py-1 rounded ${
-          //     theme === t ? "btn-primary" : "btn-secondary"
-          //   }`}
-        >
-          {t.replace("theme-", "").toUpperCase()}
-        </Button>
-      ))}
+    <div className="flex items-center gap-2">
+      {theme === "dark" ? (
+        <Sun className="" onClick={() => toggleDarkLightTheme()} />
+      ) : (
+        <Moon className="" onClick={() => toggleDarkLightTheme()} />
+      )}
     </div>
   );
 };

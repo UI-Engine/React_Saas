@@ -6,10 +6,9 @@ import React, {
   useState,
   ReactNode,
 } from "react";
-import SecureLocalStorage from "../Modules/SecureLs";
 
-export type ThemeName = "theme-light" | "theme-dark" | "theme-custom";
-export const themes: ThemeName[] = ["theme-light", "theme-dark"];
+export type ThemeName = "light" | "dark";
+export const themes: ThemeName[] = ["light", "dark"];
 
 interface ThemeContextType {
   theme: ThemeName;
@@ -18,7 +17,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: "theme-light",
+  theme: "light",
   setTheme: () => {},
   toggleDarkLightTheme: () => {},
 });
@@ -26,23 +25,25 @@ const ThemeContext = createContext<ThemeContextType>({
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState<ThemeName>(
-    () => (SecureLocalStorage.get("theme") as ThemeName) || "theme-light"
-  );
+  const [theme, setTheme] = useState<ThemeName>(() => {
+    if (typeof window !== "undefined") {
+      return (localStorage.getItem("theme") as ThemeName) || "light";
+    }
+    return "light";
+  });
 
   const toggleDarkLightTheme = () => {
-    if (theme === "theme-light") setTheme("theme-dark");
-    else setTheme("theme-light");
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   useEffect(() => {
     const root = document.documentElement;
-    // Remove old theme classes
-    themes.forEach((t) => root.classList.remove(t));
-    // Apply new theme class
-    root.classList.add(theme);
-    // Persist choice
-    SecureLocalStorage.set("theme", theme);
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (

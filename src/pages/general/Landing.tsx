@@ -1,6 +1,6 @@
-// Landing.tsx
 import React from "react";
-import { Card, Button, Badge } from "flowbite-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { FaGithub, FaReact } from "react-icons/fa";
 import {
   SiCss3,
@@ -9,32 +9,32 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from "react-icons/si";
-import { Zap } from "lucide-react";
+import { Zap, Box, MoonStar, Smartphone, Code } from "lucide-react";
 
 const features = [
   {
     title: "Modular Components",
     description:
       "Pre-built, customizable UI elements that accelerate development and ensure consistency across your app.",
-    icon: "box",
+    icon: <Box />,
   },
   {
-    title: "Built-in Theming",
+    title: "Built-in Theming Customization",
     description:
       "Light & dark modes out of the box, powered by CSS variables—no extra work needed to delight your users.",
-    icon: "moon-stars",
+    icon: <MoonStar />,
   },
   {
     title: "Responsive & Accessible",
     description:
       "Mobile-first design with WCAG-compliant contrast ratios, so everyone can use your product anywhere.",
-    icon: "device-mobile",
+    icon: <Smartphone />,
   },
   {
     title: "Open-Source & Extensible",
     description:
       "Community-driven code that you can fork, extend, or integrate—save thousands of lines by standing on our shoulders.",
-    icon: "code",
+    icon: <Code />,
   },
 ];
 
@@ -82,7 +82,7 @@ const Landing: React.FC = () => (
   <div className="space-y-20 p-8 max-w-6xl mx-auto">
     {/* 0. Overview Section */}
     <section className="space-y-4 text-center">
-      <h1 className="text-5xl font-extrabold">SaaS UI Engine</h1>
+      <h1 className="text-5xl font-semibold">SaaS UI Engine</h1>
       <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
         SaaS UI Engine is a thoughtfully crafted React & Tailwind template that
         bundles production-ready components, flexible theming, and best-practice
@@ -92,8 +92,8 @@ const Landing: React.FC = () => (
       </p>
       <p className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Featuring comprehensive documentation, TypeScript support, and seamless
-        integration with Flowbite React, SaaS UI Engine is built to scale with
-        your product—whether you’re a bootstrapped startup or an enterprise
+        integration with shadcn/ui components, SaaS UI Engine is built to scale
+        with your product—whether you're a bootstrapped startup or an enterprise
         team.
       </p>
     </section>
@@ -107,13 +107,17 @@ const Landing: React.FC = () => (
             key={f.title}
             className="border hover:shadow-lg transition-shadow"
           >
-            <div className="flex items-center space-x-3">
-              <Badge icon={f.icon as any} size="lg" />
-              <h3 className="text-xl font-semibold">{f.title}</h3>
-            </div>
-            <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-              {f.description}
-            </p>
+            <CardHeader>
+              <div className="flex items-center space-x-3 min-h-[48px]">
+                {f.icon}
+                <CardTitle className="text-xl">{f.title}</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                {f.description}
+              </p>
+            </CardContent>
           </Card>
         ))}
       </div>
@@ -146,33 +150,49 @@ const Landing: React.FC = () => (
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Card className="bg-white dark:bg-gray-800">
-          <h4 className="text-lg font-medium">Rapid Development</h4>
-          <p className="mt-1 text-gray-600 dark:text-gray-300 text-sm">
-            Get started in minutes with pre-configured layouts, authentication
-            flows, and utility classes that conform to a consistent design
-            system.
-          </p>
+          <CardHeader>
+            <CardTitle className="text-lg">Rapid Development</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">
+              Get started in minutes with pre-configured layouts, authentication
+              flows, and utility classes that conform to a consistent design
+              system.
+            </p>
+          </CardContent>
         </Card>
         <Card className="bg-white dark:bg-gray-800">
-          <h4 className="text-lg font-medium">Customizable Themes</h4>
-          <p className="mt-1 text-gray-600 dark:text-gray-300 text-sm">
-            Tweak colors, spacing, and typography via CSS variables or Tailwind
-            config to match your brand without diving deep into CSS.
-          </p>
+          <CardHeader>
+            <CardTitle className="text-lg">Customizable Themes</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">
+              Tweak colors, spacing, and typography via CSS variables or
+              Tailwind config to match your brand without diving deep into CSS.
+            </p>
+          </CardContent>
         </Card>
         <Card className="bg-white dark:bg-gray-800">
-          <h4 className="text-lg font-medium">Community & Support</h4>
-          <p className="mt-1 text-gray-600 dark:text-gray-300 text-sm">
-            Join an active open-source community on GitHub—report issues, submit
-            PRs, and discuss best practices with other SaaS builders.
-          </p>
+          <CardHeader>
+            <CardTitle className="text-lg">Community & Support</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">
+              Join an active open-source community on GitHub—report issues,
+              submit PRs, and discuss best practices with other SaaS builders.
+            </p>
+          </CardContent>
         </Card>
         <Card className="bg-white dark:bg-gray-800">
-          <h4 className="text-lg font-medium">Production Ready</h4>
-          <p className="mt-1 text-gray-600 dark:text-gray-300 text-sm">
-            All components are unit-tested, accessible, and optimized for
-            performance so you can confidently deploy to production.
-          </p>
+          <CardHeader>
+            <CardTitle className="text-lg">Production Ready</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">
+              All components are unit-tested, accessible, and optimized for
+              performance so you can confidently deploy to production.
+            </p>
+          </CardContent>
         </Card>
       </div>
     </section>
@@ -190,30 +210,33 @@ const Landing: React.FC = () => (
             key={item}
             className="cursor-pointer hover:shadow-2xl transition-shadow duration-300"
           >
-            <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
-              {item}
-            </h3>
+            <CardContent className="pt-6">
+              <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
+                {item}
+              </h3>
+            </CardContent>
           </Card>
         ))}
       </div>
       <div className="mt-6 flex justify-center">
         <Button
-          as="a"
-          href="https://github.com/UI-Engine/React_Saas"
-          target="_blank"
-          rel="noopener noreferrer"
-          color="gray"
+          asChild
           className="relative overflow-hidden inline-flex items-center space-x-2 px-6 py-3 rounded-md group"
         >
-          <FaGithub
-            size={20}
-            className="transition-colors duration-200 group-hover:text-white"
-          />
-          <span className=" transition-colors duration-200 group-hover:text-white">
-            Contribute on GitHub
-          </span>
-          {/* Continuous Shine effect */}
-          <span className="absolute inset-0 bg-white opacity-20 blur-md transform -translate-x-full animate-[shine_2s_ease-in-out_infinite]"></span>
+          <a
+            href="https://github.com/UI-Engine/React_Saas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub
+              size={20}
+              className="transition-colors duration-200 group-hover:text-white"
+            />
+            <span className="transition-colors duration-200 group-hover:text-white">
+              Contribute on GitHub
+            </span>
+            <span className="absolute inset-0 bg-white opacity-20 blur-md transform -translate-x-full animate-[shine_2s_ease-in-out_infinite]"></span>
+          </a>
         </Button>
       </div>
     </section>
@@ -226,8 +249,10 @@ const Landing: React.FC = () => (
         providing a complete, modular UI foundation—so you can focus on
         innovation, not infrastructure.
       </p>
-      <div className=" flex justify-center">
-        <Button color="primary">Get Started — It’s Free</Button>
+      <div className="flex justify-center">
+        <Button className="bg-primary text-primary-foreground">
+          Get Started — It's Free
+        </Button>
       </div>
     </section>
   </div>
